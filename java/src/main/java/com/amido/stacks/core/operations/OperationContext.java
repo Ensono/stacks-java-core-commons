@@ -4,30 +4,28 @@ public abstract class OperationContext {
 
   private String correlationId;
 
-  public OperationContext(String correlationId) {
+  protected OperationContext(final String correlationId) {
     this.correlationId = correlationId;
   }
 
   public abstract int getOperationCode();
 
   /** No arg constructor. */
-  public OperationContext() {}
+  protected OperationContext() {
+    // NO-OP
+  }
 
   public String getCorrelationId() {
     return correlationId;
   }
 
-  public void setCorrelationId(String correlationId) {
+  public void setCorrelationId(final String correlationId) {
     this.correlationId = correlationId;
   }
 
   @Override
   public String toString() {
-    return "OperationContext{"
-        + "operationCode="
-        + getOperationCode()
-        + ", correlationId="
-        + correlationId
-        + '}';
+    return String.format(
+        "OperationContext{operationCode=%d, correlationId=%s}", getOperationCode(), correlationId);
   }
 }
