@@ -2,38 +2,30 @@ package com.amido.stacks.core.operations;
 
 public abstract class OperationContext {
 
-  //  private int operationCode;
-  private String correlationId;
+    private String correlationId;
 
-  public OperationContext(String correlationId) {
-    //    this.operationCode = operationCode;
-    this.correlationId = correlationId;
-  }
+    protected OperationContext(final String correlationId) {
+        this.correlationId = correlationId;
+    }
 
-  public abstract int getOperationCode();
+    public abstract int getOperationCode();
 
-  /** No arg constructor. */
-  public OperationContext() {}
+    /** No arg constructor. */
+    protected OperationContext() {
+        // NO-OP
+    }
 
-  //  public int getOperationCode() {
-  //    return operationCode;
-  //  }
 
-  public String getCorrelationId() {
-    return correlationId;
-  }
+    public String getCorrelationId() {
+        return correlationId;
+    }
 
-  public void setCorrelationId(String correlationId) {
-    this.correlationId = correlationId;
-  }
+    public void setCorrelationId(final String correlationId) {
+        this.correlationId = correlationId;
+    }
 
-  @Override
-  public String toString() {
-    return "OperationContext{"
-        + "operationCode="
-        + getOperationCode()
-        + ", correlationId="
-        + correlationId
-        + '}';
-  }
+    @Override
+    public String toString() {
+        return String.format("OperationContext{operationCode=%d, correlationId=%s}", getOperationCode(), correlationId);
+    }
 }
