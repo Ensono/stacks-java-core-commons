@@ -108,7 +108,7 @@ variables:
       value: stacks.releases::https://amidostacks.jfrog.io/artifactory/stacks-maven-releases-local
     ${{ if ne( variables['Build.SourceBranchName'], 'main' ) }}:
       value: stacks.releases::https://amidostacks.jfrog.io/artifactory/stacks-maven-snapshots-local
-feat/
+
   # Test
   - name: functional_test
     value: false
