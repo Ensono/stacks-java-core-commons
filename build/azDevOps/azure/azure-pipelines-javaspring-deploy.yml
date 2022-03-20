@@ -16,8 +16,7 @@ trigger:
   branches:
     include:
       - 'main'
-      - 'updatePipelineOssrh'
-
+      - 'feature/updatePipelineOssrh'
   paths:
     include:
       - '*'
@@ -100,6 +99,8 @@ stages:
               # private  key id  to sign doc
               gpg_key_signing_id: "$(gpg-key-signing-id)"
               gpg_private_key: "$(gpg-private-key)"
+
+
 
           # Performs static code analysis, such as Sonar Cloud
           - template: azDevOps/azure/templates/steps/java/test-static-code-analysis.yml@templates
