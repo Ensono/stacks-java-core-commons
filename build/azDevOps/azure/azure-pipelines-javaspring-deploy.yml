@@ -100,8 +100,6 @@ stages:
               gpg_key_signing_id: "$(gpg-key-signing-id)"
               gpg_private_key: "$(gpg-private-key)"
 
-
-
           # Performs static code analysis, such as Sonar Cloud
           - template: azDevOps/azure/templates/steps/java/test-static-code-analysis.yml@templates
             parameters:
