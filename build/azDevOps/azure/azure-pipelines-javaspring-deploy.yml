@@ -16,6 +16,8 @@ trigger:
   branches:
     include:
       - 'main'
+      - 'updatePipelineOssrh'
+
   paths:
     include:
       - '*'
