@@ -62,10 +62,14 @@ stages:
         pool:
           vmImage: $(pool_vm_image)
         steps:
-          - checkout: github://amido/stacks-java-core-commons@feature/updatePipelineOssrh
-
+          - checkout: self
           - checkout: templates
-          - script: dir $(Build.SourcesDirectory)
+          - bash: |
+              dir $(Build.SourcesDirectory)
+              echo "${{ parameters.maven_repository_server }}"
+            target:
+              container: "${{ variables.docker_java_image }}"
+            displayName: "retrieve and import gpg key from key vault "
 
           # Validates all YAML files in the repo to check they adhere to standards
           - template: azDevOps/azure/templates/steps/java/test-validate-yaml.yml@templates
