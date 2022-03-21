@@ -63,7 +63,7 @@ stages:
           vmImage: $(pool_vm_image)
         steps:
           - checkout: self
-            clean: true
+            submodules: true
 
           - checkout: templates
 
