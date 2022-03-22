@@ -64,12 +64,6 @@ stages:
         steps:
           - checkout: self
           - checkout: templates
-          - bash: |
-              dir $(Build.SourcesDirectory)
-              echo "${{ variables.maven_repository_server }}"
-            target:
-              container: "${{ variables.docker_java_image }}"
-            displayName: "retrieve and import gpg key from key vault "
 
           # Validates all YAML files in the repo to check they adhere to standards
           - template: azDevOps/azure/templates/steps/java/test-validate-yaml.yml@templates
