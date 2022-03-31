@@ -97,6 +97,7 @@ stages:
               # private  key id  to sign doc
               gpg_key_signing_id: "$(gpg-key-signing-id)"
               gpg_private_key: "$(gpg-private-key)"
+              vulnerability_scan_report: "${{ variables.vulnerability_scan_report }}"
 
           # Performs static code analysis, such as Sonar Cloud
           - template: azDevOps/azure/templates/steps/java/test-static-code-analysis.yml@templates
@@ -121,6 +122,9 @@ stages:
               sonar_command: "${{ variables.sonar_command }}"
               # Docker
               docker_image_tag: "${{ variables.docker_image_tag }}"
+              # Vulnerability scan report
+              vulnerability_scan_report: "${{ variables.vulnerability_scan_report }}"
+
 
           # Post build tasks, such as Test and Coverage upload, and publishing artefacts
           - template: azDevOps/azure/templates/steps/java/post-build-tasks.yml@templates
@@ -142,6 +146,8 @@ stages:
               functional_test_project_type: "${{ variables.functional_test_project_type }}"
               # Coverage test
               coverage_test: ${{ variables.coverage_test }}
+              # Docker
+              docker_build_container: "${{ variables.docker_java_image }}"
 
       # Build, test and deploy to an artifact repository the archetype based on the Java module
       - job: ArchetypeBuild
