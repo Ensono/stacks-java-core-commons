@@ -49,7 +49,7 @@ In the `dependencies` section of your application's `pom.xml` add:
 <dependency>
     <groupId>com.amido.stacks.modules</groupId>
     <artifactId>stacks-core-commons</artifactId>
-    <version>TODO</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -175,42 +175,3 @@ To build, install and use the archetype follow these steps:
 >-  Update them manually
 >-  Re-create the relevant `import` statements to use the new-made module instead
 >-  If you plan to use this with Amido Stacks, include your namespace in the `@ComponentScan` annotation of the `Application` class.
-
-## Accessing Artifactory
-
-Our artefacts and archetypes get hosted on an Artifactory repository. To use either, from a project
-other than Amido Stacks, you will need to add that repo in your `pom.xml`:
-
-```xml
-<repositories>
-    <repository>
-        <snapshots />
-        <id>snapshots</id>
-        <name>default-maven-virtual</name>
-        <url>https://amidostacks.jfrog.io/artifactory/default-maven-virtual</url>
-    </repository>
-</repositories>
-```
-
-Alternatively, you can also add this configuration as a profile in your Maven's `settings.xml` file
-in the `.m2` folder in your home directory (any OS):
-
-```xml
-<profiles>
-    <profile>
-        <repositories>
-            <repository>
-                <snapshots/>
-                <id>snapshots</id>
-                <name>default-maven-virtual</name>
-                <url>https://amidostacks.jfrog.io/artifactory/default-maven-virtual</url>
-            </repository>
-        </repositories>
-        <id>artifactory</id>
-    </profile>
-</profiles>
-
-<activeProfiles>
-    <activeProfile>artifactory</activeProfile>
-</activeProfiles>
-```
