@@ -5,8 +5,10 @@ import static java.util.UUID.randomUUID;
 
 import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+@Tag("Unit")
 public class MapperUtilsTest {
 
   @Test
