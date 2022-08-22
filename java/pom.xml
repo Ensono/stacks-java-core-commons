@@ -38,7 +38,18 @@
           <groupId>com.amido.stacks.modules</groupId>
           <artifactId>stacks-azure-cosmos</artifactId>
         </exclusion>
-
+         <exclusion>
+          <groupId>io.netty</groupId>
+          <artifactId>netty-codec</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>io.netty</groupId>
+          <artifactId>netty-common</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+        </exclusion>
       </exclusions>
     </dependency>
 
