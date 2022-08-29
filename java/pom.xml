@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>stacks-core-commons</artifactId>
-  <version>2.0.1</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>stacks-core-commons</name>
   <description>Common components for the Java Stacks solution</description>
 
@@ -37,6 +37,10 @@
         <exclusion>
           <groupId>com.amido.stacks.modules</groupId>
           <artifactId>stacks-azure-cosmos</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.azure</groupId>
+          <artifactId>azure-spring-data-cosmos</artifactId>
         </exclusion>
          <exclusion>
           <groupId>io.netty</groupId>
