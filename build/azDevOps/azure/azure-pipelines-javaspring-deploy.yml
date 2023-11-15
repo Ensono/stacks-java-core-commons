@@ -40,7 +40,7 @@ resources:
       image: amidostacks/node-14:0.0.1
     # Container for Sonar Scanner
     - container: sonar_scanner
-      image: amidostacks/runner-pwsh-dotnet:0.4.49-unstable
+      image: amidostacks/runner-pwsh-dotnet:0.4.51-stable
     # Container for Kubernetes Deployment
     - container: k8s_deploy
       image: amidostacks/ci-k8s:0.0.12
