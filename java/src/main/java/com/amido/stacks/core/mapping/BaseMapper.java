@@ -1,4 +1,4 @@
-package com.amido.stacks.core.mapping;
+package com.ensono.stacks.core.mapping;
 
 import java.util.List;
 import org.mapstruct.MappingTarget;

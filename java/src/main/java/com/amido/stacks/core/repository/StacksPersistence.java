@@ -1,4 +1,4 @@
-package com.amido.stacks.core.repository;
+package com.ensono.stacks.core.repository;
 
 import org.springframework.stereotype.Repository;
 
