@@ -53,7 +53,7 @@ stages:
       - group: stacks-credentials-nonprod-kv
       - group: sonar-credentials
       - group: stacks-java-modules
-      - group: stacks-java-modules-commons
+      - group: stacks-java-core-commons
       - group: maven-credentials
       - group: release-github-credentials
     jobs:
