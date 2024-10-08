@@ -1,6 +1,6 @@
-package com.amido.stacks.core.mapping;
+package com.ensono.stacks.core.mapping;
 
-import static com.amido.stacks.core.mapping.MapperUtils.map;
+import static com.ensono.stacks.core.mapping.MapperUtils.map;
 import static java.util.UUID.randomUUID;
 
 import java.util.UUID;
