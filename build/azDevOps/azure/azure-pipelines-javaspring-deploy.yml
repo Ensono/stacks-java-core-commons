@@ -30,6 +30,8 @@ resources:
       # REPOSITORY IS PUBLIC
       endpoint: ensonostacks
 
+  # NOTE: To use the branch release containers, prefix with ensonostackseuweirdfmu.azurecr.io/
+  # i.e. ensonostackseuweirdfmu.azurecr.io/ensono/eir-java:1.1.222
   containers:
     # Container for Java Build and Testing
     # Container for Sonar Scanner
