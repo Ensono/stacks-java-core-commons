@@ -7,7 +7,7 @@
   <parent>
     <groupId>com.ensono.stacks.modules</groupId>
     <artifactId>stacks-modules-parent</artifactId>
-    <version>3.0.45-PR</version>
+    <version>3.0.52</version>
   </parent>
 
   <artifactId>stacks-core-commons</artifactId>
@@ -15,10 +15,15 @@
   <name>stacks-core-commons</name>
   <description>Common components for the Java Stacks solution</description>
 
+  <properties>
+    <spring-context.version>6.1.13</spring-context.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
+      <version>${spring-context.version}</version>
     </dependency>
   </dependencies>
 

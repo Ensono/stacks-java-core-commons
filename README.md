@@ -45,6 +45,8 @@ In the `dependencies` section of your application's `pom.xml` add:
 </dependency>
 ```
 
+NOTE: You should check to see the latest version and use that.
+
 Then you can do a `./mvnw clean compile` to fetch it; after that, you can use it like any other dependency.
 
 ```bash
