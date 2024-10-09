@@ -15,34 +15,34 @@ public class MapperUtilsTest {
   public void shouldConvertBetweenUuidAndString() {
 
     UUID uuid = randomUUID();
-    Assertions.assertEquals(map(uuid), uuid.toString());
+    Assertions.assertEquals(uuid.toString(), map(uuid));
   }
 
   @Test
   public void shouldReturnNullWhenUuidInputIsNull() {
 
     UUID uuid = null;
-    Assertions.assertEquals(map(uuid), null);
+    Assertions.assertEquals(null, map(uuid));
   }
 
   @Test
   public void shouldConvertBetweenStringAndUuid() {
 
     UUID uuid = randomUUID();
-    Assertions.assertEquals(map(uuid.toString()), uuid);
+    Assertions.assertEquals(uuid, map(uuid.toString()));
   }
 
   @Test
   public void shouldReturnNullWhenStringInputIsNull() {
 
     String uuid = null;
-    Assertions.assertEquals(uuid, null);
+    Assertions.assertEquals(null, map(uuid));
   }
 
   @Test
   public void shouldReturnNullWhenStringInputIsEmpty() {
 
     String uuid = " ";
-    Assertions.assertEquals(uuid, null);
+    Assertions.assertEquals(null, map(uuid));
   }
 }
