@@ -2,7 +2,7 @@ variables:
   - name: region
     value: westeurope
   - name: company
-    value: amido
+    value: Ensono
   - name: project
     value: stacks
   - name: domain
@@ -23,7 +23,7 @@ variables:
   # It is case sensitive for TFS based repos
 
   - name: self_remote_repo
-    value: "amido/$(self_repo)"
+    value: "Ensono/$(self_repo)"
   - name: self_repo_src
     value: java
   - name: self_post_deploy_test_src
@@ -48,16 +48,14 @@ variables:
 
   # Versioning
   - name: version_major
-    value: 2
+    value: 3
   - name: version_minor
     value: 0
-  - name: version_patch
-    value: 7
   - name: build_type
     ${{ if eq( variables['Build.SourceBranchName'], 'main' ) }}:
-      value: "RELEASE"
+      value: ""
     ${{ if ne( variables['Build.SourceBranchName'], 'main' ) }}:
-      value: "SNAPSHOT"
+      value: "-PR"
 
   # PR / Branch vars
   - name: source_branch_ref
@@ -77,9 +75,6 @@ variables:
   - name: docker_java_image
     value: "azul_java"
 
-  - name: resource_def_name
-    value: java-core-commons
-
   # BUILD ARTIFACTS across stages
   - name: build_artifact_deploy_path
     value: "${{ variables.self_repo_dir }}/deploy/k8s/app"
@@ -92,33 +87,19 @@ variables:
 
   # Maven
   - name: maven_package_version
-    ${{ if eq( variables['Build.SourceBranchName'], 'main' ) }}:
-      value: "${{ variables.version_major }}.${{ variables.version_minor }}.${{ variables.version_patch }}"
-    ${{ if ne( variables['Build.SourceBranchName'], 'main' ) }}:
-      value: "$(Build.BuildNumber)"
+    value: "$(Build.BuildNumber)"
   - name: maven_cache_directory
     value: "./.m2"
   - name: maven_surefire_reports_dir
     value: "target/surefire-reports"
   - name: maven_allowed_test_tags
     value: "Unit | Component | Integration"
-  - name: maven_archetype_pom_file
-    value: "target/generated-sources/archetype/pom.xml"
-  - name: maven_archetype_properties_file
-    value: "archetype.properties"
-  - name: maven_settings_file
-    value: "./.mvn/settings.xml"
-  - name: maven_repository_server
-    ${{ if eq( variables['Build.SourceBranchName'], 'main' ) }}:
-      value: ossrh::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
-    ${{ if ne( variables['Build.SourceBranchName'], 'main' ) }}:
-      value: ossrh::https://s01.oss.sonatype.org/content/repositories/snapshots
 
   # Test
   - name: functional_test
-    value: false
+    value: true
   - name: coverage_test
-    value: false
+    value: true
 
   # Vulnerability Scan
   - name: vulnerability_scan
@@ -127,6 +108,10 @@ variables:
     value: "target/dependency-check-report.html"
   - name: vulnerability_scan_fail_build_on_detection
     value: false
+  - name: vulnerability_scan_api_key
+    value: "$(VULNERABILITY_SCAN_API_KEY)"
+  - name: vulnerability_scan_database_directory
+    value: ${{ variables.self_repo_dir }}/.vulnerability-database
 
   # Yamllint
   - name: yamllint_config_file
@@ -136,7 +121,7 @@ variables:
 
   # Build Task Naming
   - name: java_project_type
-    value: "Stacks Java commons module"
+    value: "Stacks Java Commons Module"
   - name: functional_test_project_type
     value: "Functional API Tests"
 
@@ -153,7 +138,15 @@ variables:
   # GitHub infomration
   - name: create_release
     value: true
-  - name: github_release_service_connection
-    value: GitHubReleases
   - name: github_org
     value: $(company)
+  - name: VERSION_NUMBER
+    value: $(Build.BuildNumber)
+  - name: COMMIT_ID
+    value: $(Build.SourceVersion)
+  - name: OWNER
+    value: ensono
+  - name: REPOSITORY
+    value: stacks-java-core-commons
+  - name: ARTIFACTS_DIR
+    value: artifacts/
