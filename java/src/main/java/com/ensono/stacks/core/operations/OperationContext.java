@@ -1,4 +1,4 @@
-package com.amido.stacks.core.operations;
+package com.ensono.stacks.core.operations;
 
 public abstract class OperationContext {
 

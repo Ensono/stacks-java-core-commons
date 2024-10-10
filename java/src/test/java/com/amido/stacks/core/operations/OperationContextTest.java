@@ -1,4 +1,4 @@
-package com.amido.stacks.core.operations;
+package com.ensono.stacks.core.operations;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.Mockito.when;

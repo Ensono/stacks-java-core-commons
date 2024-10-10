@@ -1,6 +1,6 @@
-package com.amido.stacks.core.mapping;
+package com.ensono.stacks.core.mapping;
 
-import static com.amido.stacks.core.mapping.MapperUtils.map;
+import static com.ensono.stacks.core.mapping.MapperUtils.map;
 import static java.util.UUID.randomUUID;
 
 import java.util.UUID;
@@ -15,13 +15,34 @@ public class MapperUtilsTest {
   public void shouldConvertBetweenUuidAndString() {
 
     UUID uuid = randomUUID();
-    Assertions.assertEquals(map(uuid), uuid.toString());
+    Assertions.assertEquals(uuid.toString(), map(uuid));
+  }
+
+  @Test
+  public void shouldReturnNullWhenUuidInputIsNull() {
+
+    UUID uuid = null;
+    Assertions.assertEquals(null, map(uuid));
   }
 
   @Test
   public void shouldConvertBetweenStringAndUuid() {
 
     UUID uuid = randomUUID();
-    Assertions.assertEquals(map(uuid.toString()), uuid);
+    Assertions.assertEquals(uuid, map(uuid.toString()));
+  }
+
+  @Test
+  public void shouldReturnNullWhenStringInputIsNull() {
+
+    String uuid = null;
+    Assertions.assertEquals(null, map(uuid));
+  }
+
+  @Test
+  public void shouldReturnNullWhenStringInputIsEmpty() {
+
+    String uuid = " ";
+    Assertions.assertEquals(null, map(uuid));
   }
 }

@@ -1,4 +1,4 @@
-package com.amido.stacks.core.mapping;
+package com.ensono.stacks.core.mapping;
 
 import static java.util.UUID.fromString;
 
