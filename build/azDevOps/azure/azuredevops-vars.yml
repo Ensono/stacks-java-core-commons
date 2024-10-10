@@ -48,7 +48,7 @@ variables:
 
   # Versioning
   - name: version_major
-    value: 2
+    value: 3
   - name: version_minor
     value: 0
   - name: build_type
