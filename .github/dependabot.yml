@@ -6,5 +6,9 @@ updates:
       interval: weekly
       day: monday
       timezone: Europe/London
+    ignore:
+      - dependency-name: "com.amido.stacks.*"
+        versions:
+          - "*-PR"
     open-pull-requests-limit: 50
     rebase-strategy: disabled
