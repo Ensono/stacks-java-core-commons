@@ -6,8 +6,5 @@ updates:
       interval: weekly
       day: monday
       timezone: Europe/London
-    ignore:
-      - dependency-name: "com.ensono.stacks.*"
-        versions: ["*-PR"]
     open-pull-requests-limit: 50
     rebase-strategy: disabled
