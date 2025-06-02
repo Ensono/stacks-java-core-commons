@@ -16,7 +16,7 @@
   <description>Common components for the Java Stacks solution</description>
 
   <properties>
-    <spring-context.version>6.2.2</spring-context.version>
+    <spring-context.version>6.2.7</spring-context.version>
   </properties>
 
   <dependencies>
