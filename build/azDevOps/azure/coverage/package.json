@@ -7,8 +7,12 @@
   },
   "devDependencies": {
     "gulp": "^5.0.0",
-    "gulp-inline-source": "^4.0.0",
     "gulp-postcss": "^10.0.0",
+    "inline-source": "^8.0.3",
     "postcss-image-inliner": "^7.0.1"
+  },
+  "overrides": {
+    "svgo": "3.3.3",
+    "picomatch": "2.3.2"
   }
 }

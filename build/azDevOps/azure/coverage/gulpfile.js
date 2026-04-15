@@ -1,15 +1,18 @@
-var gulp = require('gulp');
+const gulp = require('gulp');
+const path = require('node:path');
+const { Transform } = require('node:stream');
 
 // For inlining images in CSS
 const postcss = require('gulp-postcss');
 const imageInliner = require('postcss-image-inliner');
+const { inlineSource } = require('inline-source');
 
 gulp.task('inline-css-images', function() {
-    var opts = {
+    const opts = {
         assetPaths: ['./jacoco/jacoco-resources'],
     };
 
-    var plugins = [
+    const plugins = [
         imageInliner(opts),
     ];
 
@@ -18,11 +21,38 @@ gulp.task('inline-css-images', function() {
         .pipe(gulp.dest('./jacoco'));
 });
 
-// For inlining everything into the HTML files
-var inlinesource = require('gulp-inline-source');
+function inlineHtmlSources() {
+    return new Transform({
+        objectMode: true,
+        transform: async function(file, encoding, callback) {
+            if (file.isNull()) {
+                callback(null, file);
+                return;
+            }
+
+            if (file.isStream()) {
+                callback(new Error('Streaming HTML files is not supported'));
+                return;
+            }
+
+            try {
+                const inlinedHtml = await inlineSource(file.contents.toString(encoding), {
+                    attribute: false,
+                    compress: false,
+                    rootpath: path.dirname(file.path),
+                });
+
+                file.contents = Buffer.from(inlinedHtml);
+                callback(null, file);
+            } catch (error) {
+                callback(error);
+            }
+        },
+    });
+}
 
 gulp.task('inline-sources', function () {
     return gulp.src('./jacoco/**/*.html')
-        .pipe(inlinesource({attribute: false, compress: false}))
+        .pipe(inlineHtmlSources())
         .pipe(gulp.dest('./jacoco-inline'));
 });
