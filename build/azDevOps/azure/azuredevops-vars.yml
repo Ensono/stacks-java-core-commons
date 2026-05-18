@@ -1,3 +1,8 @@
+parameters:
+  - name: enable_owasp_dependency_check
+    type: boolean
+    default: false
+
 variables:
   - name: region
     value: westeurope
@@ -103,7 +108,10 @@ variables:
 
   # Vulnerability Scan
   - name: vulnerability_scan
-    value: true
+    ${{ if eq(parameters.enable_owasp_dependency_check, true) }}:
+      value: "true"
+    ${{ if ne(parameters.enable_owasp_dependency_check, true) }}:
+      value: "false"
   - name: vulnerability_scan_report
     value: "target/dependency-check-report.html"
   - name: vulnerability_scan_fail_build_on_detection
